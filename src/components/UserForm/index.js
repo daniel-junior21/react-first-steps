@@ -18,13 +18,15 @@ const UserForm = (props) => {
             image,
             team
         })
+        cleanForm();
     }
 
-    const teams = [
-        'Back-End', 
-        'Front-End', 
-        'Mobile'
-    ]
+    function cleanForm() {
+        setName('');
+        setRole('');
+        setImage('');
+        setTeam('');
+    }
 
     return (
         <section className="presentation-form">
@@ -53,7 +55,7 @@ const UserForm = (props) => {
                 />
                 <Select 
                     label="Team" 
-                    options={teams} 
+                    options={props.teamsNames} 
                     required={true}
                     value={team}
                     updatedValue={value => setTeam(value)}
