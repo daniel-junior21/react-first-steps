@@ -14,7 +14,6 @@ function App() {
   ]
 
   const setNewUser = (user) => {
-    console.log('response user form:', user);
     setUsers([...users, user]);
   }
 

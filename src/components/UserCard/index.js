@@ -1,9 +1,9 @@
 import './UserCard.css'
 
-const UserCard = ({user}) => {
+const UserCard = ({user, backgroundColor}) => {
     return (
         <div className='user-card'>
-            <div className='header'>
+            <div className='header' style={{backgroundColor}}>
                 <img src={user.image} alt={user.name} />
             </div>
             <div  className='body'>
