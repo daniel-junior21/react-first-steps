@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import styles from './Header.module.css'
+import HeaderLink from '../HeaderLink';
 
 const Header = () => {
     return (
@@ -7,12 +7,12 @@ const Header = () => {
             <nav className={styles.nav}>
                 <img src="/images/logo.png" alt="Banner" />
                 <div className={styles.links}>
-                    <Link className={styles.link} to="/">
+                    <HeaderLink to="/">
                         Home
-                    </Link>
-                    <Link className={styles.link} to="/blog">
+                    </HeaderLink>
+                    <HeaderLink to="/blog">
                         Blog
-                    </Link>
+                    </HeaderLink>
                 </div>
             </nav>
         </header>

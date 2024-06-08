@@ -22,13 +22,6 @@
     max-width: 10%;
 }
 
-.link {
-    font-size: 1.25rem;
-    line-height: 1.5rem;
-    color: #ffffff;
-    text-decoration: none;
-}
-
 @media (max-width: 744px) {
     .nav {
         height: 72px;
