@@ -1,12 +1,20 @@
 import UserCard from '../UserCard';
 import './Team.css'
+import hexToRgba from 'hex-to-rgba';
 
-const Team = (props) => {
+const Team = ({ team, users, updateColor}) => {
     return (
-        props.users.length > 0 && <section className="team" style={{ backgroundColor: props.secondaryColor }}>
-            <h3 style={{ borderColor: props.primaryColor }}>{props.name}</h3>
+        users.length > 0 && <section className="team" style={{ backgroundImage: 'url(/images/fundo.png)', backgroundColor: hexToRgba(team.color, '0.6') }}>
+            <input type='color' className='color' onChange={event => updateColor(event.target.value, team.id)}/>
+            <h3 style={{ borderColor: team.color }}>{team.name}</h3>
             <div className="users">
-                {props.users.map( user => <UserCard key={user.name} user={user} backgroundColor={props.primaryColor}/> )}
+                {users.map( user => {
+                    console.log('Renderizando colaborador', user.id);
+                    return <UserCard key={user.name} 
+                                user={user} 
+                                backgroundColor={team.color}
+                            /> 
+                })}
             </div>
         </section>
     )

@@ -5,16 +5,29 @@ import Team from './components/Team';
 import Footer from './components/Footer';
 
 function App() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([
+    {id:crypto.randomUUID(), name:"Daniel", role: "Developer", image:"https://github.com/daniel-junior21.png", team:"Back-End"},
+    {id:crypto.randomUUID(), name:"Daniel", role: "Developer", image:"https://github.com/daniel-junior21.png", team:"Front-End"},
+    {id:crypto.randomUUID(), name:"Daniel", role: "Developer", image:"https://github.com/daniel-junior21.png", team:"Mobile"}
+  ]);
 
-  const teams = [
-    {name:"Back-End", primaryColor: "#57C278", secondaryColor: "#D9F7E9"}, 
-    {name:"Front-End", primaryColor: "#82CFFA", secondaryColor: "#E8F8FF"}, 
-    {name:"Mobile", primaryColor: "#FEBA05", secondaryColor: "#FFF5D9"}
-  ]
+  const [teams, setTeams] = useState([
+    {id: crypto.randomUUID(), name:"Back-End", color: "#57C278"}, 
+    {id: crypto.randomUUID(), name:"Front-End", color: "#82CFFA"}, 
+    {id: crypto.randomUUID(), name:"Mobile", color: "#FEBA05"}
+  ]);
 
   const setNewUser = (user) => {
     setUsers([...users, user]);
+  }
+
+  function updateTeamColor(color, id) {
+    setTeams(teams.map(team => {
+      if(team.id === id) {
+        team.color = color;
+      }
+      return team;
+    }))
   }
 
   return (
@@ -23,12 +36,12 @@ function App() {
       <UserForm
         setNewUser={user => setNewUser(user)}
         teamsNames={teams.map(team => team.name)}/>
-      {teams.map(team => <Team 
+      {teams.map(team => 
+      <Team 
         key={team.name}
-        name={team.name}
-        primaryColor={team.primaryColor}
-        secondaryColor={team.secondaryColor}
+        team={team}
         users={users.filter(user => user.team === team.name)}
+        updateColor={updateTeamColor}
       />)}
       <Footer />
     </div>
