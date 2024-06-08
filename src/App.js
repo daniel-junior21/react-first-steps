@@ -21,6 +21,11 @@ function App() {
     setUsers([...users, user]);
   }
 
+  function deleteUser(id) {
+    setUsers(users.filter(user => user.id !== id))
+    console.log('User deleted with success!');
+  }
+
   function updateTeamColor(color, id) {
     setTeams(teams.map(team => {
       if(team.id === id) {
@@ -42,6 +47,7 @@ function App() {
         team={team}
         users={users.filter(user => user.team === team.name)}
         updateColor={updateTeamColor}
+        deleteUser={deleteUser}
       />)}
       <Footer />
     </div>
