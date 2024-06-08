@@ -6,9 +6,9 @@ import Footer from './components/Footer';
 
 function App() {
   const [users, setUsers] = useState([
-    {id:crypto.randomUUID(), name:"Daniel", role: "Developer", image:"https://github.com/daniel-junior21.png", team:"Back-End"},
-    {id:crypto.randomUUID(), name:"Daniel", role: "Developer", image:"https://github.com/daniel-junior21.png", team:"Front-End"},
-    {id:crypto.randomUUID(), name:"Daniel", role: "Developer", image:"https://github.com/daniel-junior21.png", team:"Mobile"}
+    {id:crypto.randomUUID(), name:"Daniel", role: "Developer", image:"https://github.com/daniel-junior21.png", team:"Back-End", fav: false},
+    {id:crypto.randomUUID(), name:"Daniel", role: "Developer", image:"https://github.com/daniel-junior21.png", team:"Front-End", fav: false},
+    {id:crypto.randomUUID(), name:"Daniel", role: "Developer", image:"https://github.com/daniel-junior21.png", team:"Mobile", fav: false}
   ]);
 
   const [teams, setTeams] = useState([
@@ -39,6 +39,15 @@ function App() {
     }))
   }
 
+  function favUser(id) {
+    setUsers(users.map(user => {
+      if(user.id === id) {
+        user.fav = !user.fav;
+      }
+      return user
+    }))
+  }
+
   return (
     <div className="App">
       <Banner />
@@ -53,6 +62,7 @@ function App() {
         users={users.filter(user => user.team === team.name)}
         updateColor={updateTeamColor}
         deleteUser={deleteUser}
+        favUser={favUser}
       />)}
       <Footer />
     </div>

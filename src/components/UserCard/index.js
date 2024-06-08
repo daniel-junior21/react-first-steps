@@ -1,7 +1,11 @@
 import './UserCard.css'
-import { AiFillCloseCircle } from 'react-icons/ai'; 
+import { AiFillCloseCircle, AiFillHeart, AiOutlineHeart } from 'react-icons/ai'; 
 
-const UserCard = ({user, backgroundColor, deleteUser}) => {
+const UserCard = ({user, backgroundColor, deleteUser, favUser}) => {
+    function fav() {
+        favUser(user.id);
+    }
+    
     return (
         <div className='user-card'>
             <AiFillCloseCircle className='delete'
@@ -14,6 +18,12 @@ const UserCard = ({user, backgroundColor, deleteUser}) => {
             <div  className='body'>
                 <h4>{user.name}</h4>
                 <h5>{user.role}</h5>
+                <div className='fav'>
+                    {user.fav
+                        ? <AiFillHeart size={25} onClick={fav} /> 
+                        : <AiOutlineHeart size={25} onClick={fav} />
+                    }
+                </div>
             </div>
         </div>
     )

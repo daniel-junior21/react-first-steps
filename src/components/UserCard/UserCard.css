@@ -43,3 +43,7 @@
     right: -10px;
     top: -10px;
 }
+
+.user-card .fav {
+    margin-top: 10px;
+}
