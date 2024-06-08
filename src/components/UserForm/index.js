@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Button from '../Button';
 import Select from '../Select';
-import TextInput from '../TextInput';
+import InputField from '../InputField';
 import './Form.css'
 
 const UserForm = (props) => {
@@ -9,44 +9,62 @@ const UserForm = (props) => {
     const [role, setRole] = useState('');
     const [image, setImage] = useState('');
     const [team, setTeam] = useState('');
+    const [teamName, setTeamName] = useState('');
+    const [teamColor, setTeamColor] = useState('');
 
-    const submitingForm = (event) => {
+    const submitUserForm = (event) => {
         event.preventDefault();
         props.setNewUser({
+            id: crypto.randomUUID(),
             name,
             role,
             image,
             team
         })
-        cleanForm();
+        cleanUserForm();
     }
 
-    function cleanForm() {
+    const submitTeamForm = (event) => {
+        event.preventDefault();
+        props.setNewTeam({
+            id: crypto.randomUUID(),
+            name: teamName,
+            color: teamColor,
+        })
+        cleanTeamForm();
+    }
+
+    function cleanUserForm() {
         setName('');
         setRole('');
         setImage('');
         setTeam('');
     }
 
+    function cleanTeamForm() {
+        setTeamName('');
+        setTeamColor('');
+    }
+
     return (
-        <section className="presentation-form">
-            <form onSubmit={submitingForm}>
+        <section className="form-container">
+            <form className="form" onSubmit={submitUserForm}>
                 <h2>Fill the form to create a presentation card</h2>
-                <TextInput 
+                <InputField 
                     label="Name" 
                     placeHolder="Insert your name" 
                     required={true} 
                     value={name}
                     updatedValue={value => setName(value)}
                 />
-                <TextInput 
+                <InputField 
                     label="Role" 
                     placeHolder="Insert your role" 
                     required={true}
                     value={role}
                     updatedValue={value => setRole(value)}
                 />
-                <TextInput 
+                <InputField 
                     label="Image" 
                     placeHolder="Insert the image path" 
                     required={false}
@@ -62,6 +80,27 @@ const UserForm = (props) => {
                 />
                 <Button>
                     Create card
+                </Button>
+            </form>
+            <form className="form" onSubmit={submitTeamForm}>
+                <h2>Fill the form to create a new Team</h2>
+                <InputField 
+                    label="Name" 
+                    placeHolder="Insert your team name" 
+                    required={true} 
+                    value={teamName}
+                    updatedValue={value => setTeamName(value)}
+                />
+                <InputField
+                    type='color'
+                    label="Color" 
+                    placeHolder="Insert your team color" 
+                    required={true}
+                    value={teamColor}
+                    updatedValue={value => setTeamColor(value)}
+                />
+                <Button>
+                    Create Team
                 </Button>
             </form>
         </section>

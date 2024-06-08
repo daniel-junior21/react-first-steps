@@ -21,6 +21,10 @@ function App() {
     setUsers([...users, user]);
   }
 
+  const setNewTeam = (team) => {
+    setTeams([...teams, team]);
+  }
+
   function deleteUser(id) {
     setUsers(users.filter(user => user.id !== id))
     console.log('User deleted with success!');
@@ -40,6 +44,7 @@ function App() {
       <Banner />
       <UserForm
         setNewUser={user => setNewUser(user)}
+        setNewTeam={team => setNewTeam(team)}
         teamsNames={teams.map(team => team.name)}/>
       {teams.map(team => 
       <Team 
