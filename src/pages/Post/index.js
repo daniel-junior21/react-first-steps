@@ -2,6 +2,7 @@ import './Post.css'
 import { useParams } from "react-router-dom";
 import posts from "../../assets/posts.json";
 import Markdown from "react-markdown";
+import NotFound from '../NotFound';
 
 export default function Post() {
     const params = useParams();
@@ -11,7 +12,7 @@ export default function Post() {
     });
 
     if(!post) {
-        return 
+        return <NotFound />
     }
 
     return (

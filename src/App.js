@@ -4,6 +4,7 @@ import Blog from './pages/Blog';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Post from './pages/Post';
+import NotFound from './pages/NotFound';
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/blog' element={<Blog />} />
         <Route path='/posts/:id' element={<Post />} />
-        <Route path='*' element={<h1>404 - Página não encontrada!</h1>} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />
     </BrowserRouter>
