@@ -1,6 +1,6 @@
 import styles from "./Blog.module.css";
 import posts from '../../assets/posts.json';
-import Post from "../../components/Post";
+import PostCard from "../../components/PostCard";
 
 const Blog = () => {
     return (
@@ -17,9 +17,9 @@ const Blog = () => {
             </div>
 
             <ul className={styles.posts}>
-                {posts.map(post => 
-                    <li>
-                        <Post post={post} />
+                {posts.map((post, index) => 
+                    <li key={index}>
+                        <PostCard post={post} />
                     </li>
                 )}
             </ul>

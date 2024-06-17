@@ -15,12 +15,17 @@
     width: 100%;
 }
 
+.link {
+    text-decoration: none;
+}
+
 .title {
     font-family: var(--fonte-secundaria);
     font-size: 1.25rem;
-    color: var(--azul-escuro);
+    color: #6278F7;
     line-height: 1.75rem;
     margin: 1.5rem 0 1.75rem;
+    text-decoration: none;
 }
 
 .buttonRead {
