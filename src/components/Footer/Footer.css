@@ -1,0 +1,16 @@
+.footer {
+    background: #6278F7;
+    color: #FFF;
+    padding: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer .social-media a{
+    padding: 0 16px;
+}
+
+.footer .created-by {
+    color: #FFF;
+}

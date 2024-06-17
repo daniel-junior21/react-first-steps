@@ -1,0 +1,29 @@
+.header {
+    background-color: #6278F7;
+}
+
+.nav {
+    display: flex;
+    position: relative;
+    align-items: center;
+    padding-right: 50px;
+    padding-left: 20px;
+    height: 85px;
+    box-shadow: 8px 8px 16px rgba(250, 249, 249, 0.08);
+}
+
+.links {
+    margin-left: auto;
+    display: flex;
+    column-gap: 2rem;
+}
+
+.nav img {
+    max-width: 10%;
+}
+
+@media (max-width: 744px) {
+    .nav {
+        height: 72px;
+    }
+}
